@@ -1,13 +1,21 @@
 mod point;
 use point::Point;
 
+struct Square {
+    points: [Point; 4],
+}
+
 fn main() {
-    let origin: Point = (0.0, 0.0).into();
-    let one = Point::from((1.0, 1.0));
-    println!("The origin is: {}", origin);
-    println!(
-        "The distance of {} from the origin is: {}",
-        one,
-        one.distance(origin)
-    );
+    let square: Square = Square {
+        points: [
+            (0.0, 0.0).into(),
+            (0.0, 1.0).into(),
+            (1.0, 1.0).into(),
+            (1.0, 0.0).into(),
+        ],
+    };
+
+    for (i, point) in square.points.iter().enumerate() {
+        println!("The {}th point of square is: {}", i, point);
+    }
 }
